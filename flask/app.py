@@ -64,7 +64,7 @@ def register():
             return redirect(url_for('login'))
         else:
             flash("이미 존재하는 이메일입니다.", "danger")
-    return rgginder_template('register.html')
+    return render_template('register.html')
 
 
 @app.route('/quiz', methods=['GET', 'POST'])
