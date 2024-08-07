@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>문제 풀기</h2>
+<form method="post">
+    <input type="hidden" name="problem_id" value="{{ problem.problem_id }}">
+    <h3>{{ problem.title }}</h3>
+    <!-- \n을 <br>로 변환 -->
+    <p>{{ problem.description | replace('\\n', '<br>')|safe }}</p>
+    <label for="answer">답:</label>
+    <input type="text" name="answer" id="answer" required>
+    <button type="submit">제출</button>
+</form>
+{% endblock %}
