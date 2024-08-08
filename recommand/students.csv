@@ -1,4 +1,4 @@
-﻿student_id,name,email
+student_id,name,email
 1,김영희,kim.yeonghui@example.com
 2,이철수,lee.cheolsu@example.com
 3,박민준,park.minjun@example.com
@@ -8,9 +8,6 @@
 7,a@ab.com,a@ab.com
 8,b,b.com
 9,변사또,byun@test.com
-10,abc,abc@abc.com
-11,신동진,dongjinc@naver.com
-12,김슬기,sweecl@naver.com
 10,홍길동,hong@abcd.com
 11,song,song@abc.com
 12,김소영,soyoungs2@koreatech.ac.kr

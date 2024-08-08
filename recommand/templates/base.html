@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문제은행 : AI융합교육평가</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>문제은행 / 문제풀기 : AI융합교육평가</h1>
+        <nav>
+            {% if 'user_id' in session %}
+            <a href="{{ url_for('quiz') }}">퀴즈</a>
+            <a href="{{ url_for('results') }}">결과 보기</a>
+            <a href="{{ url_for('logout') }}">로그아웃</a>
+            {% else %}
+            <a href="{{ url_for('login') }}">로그인</a>
+            <a href="{{ url_for('register') }}">회원가입</a>
+            {% endif %}
+        </nav>
+    </header>
+    <main>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <ul class="flashes">
+            {% for category, message in messages %}
+            <li class="{{ category }}">{{ message |safe}}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2024 Quiz Application, 한기대 대학원 AI융합교육학과</p>
+    </footer>
+</body>
+</html>

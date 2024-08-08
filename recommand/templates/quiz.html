@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>문제 풀기</h2>
+<form method="post">
+    <input type="hidden" name="problem_id" value="{{ problem.problem_id }}">
+    <h3>{{ problem.title }}</h3>
+    <!-- \n을 <br>로 변환 -->
+    <p>{{ problem.description | replace('\\n', '<br>')|safe }}</p>
+    <label for="answer">답:</label>
+    <input type="text" name="answer" id="answer" required>
+    <button type="submit">제출</button>
+</form>
+{% if solved_problems_count >= 5 %}
+<div>
+    <h3>사용자 기반 협업 필터링 추천 문제 : </h3>
+    <div class="recommended-container">
+        <div class="card-container">
+            {% for user_id, problem_id in recommended_problem_ids %}
+            <div class="card">
+                <a href="{{ url_for('recommend', problem_id=problem_id) }}">
+                    <div class="card-body">
+                        <h4>{{ auth.get_user_by_id(user_id).name }}님의 추천 문제</h4>
+                        <p>문제 ID: {{ problem_id }}</p>
+                    </div>
+                </a>
+            </div>
+
+            {% endfor %}
+        </div>
+    </div>
+    {% else %}
+    <p>{{ 5 - solved_problems_count }}개 문제를 더 풀면 사용자 기반으로 문제를 추천 해드려요!</p>
+    {% endif %}
+    {% endblock %}
+</div>

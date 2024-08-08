@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>결과 보기</h2>
+<table>
+    <thead>
+        <tr>
+            <th>기록 ID</th>
+            <th>학생 ID</th>
+            <th>문제 ID</th>
+            <th>소요 시간 (초)</th>
+            <th>점수</th>
+            <th>상태</th>
+            <th>시도 횟수</th>
+            <th>마지막 수정 시간</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for record in records %}
+        <tr>
+            <td>{{ record.record_id }}</td>
+            <td>{{ record.student_id }}</td>
+            <td>{{ record.problem_id }}</td>
+            <td>{{ record.elapsed_time }}</td>
+            <td>{{ record.score }}</td>
+            <td>{{ record.status }}</td>
+            <td>{{ record.attempt_count }}</td>
+            <td>{{ record.last_modified }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
